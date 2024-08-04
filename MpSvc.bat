@@ -1,6 +1,5 @@
 @shift /0
 @echo off
-color 4
 setlocal enabledelayedexpansion
 
 Reg.exe add "HKCU\CONSOLE" /v "VirtualTerminalLevel" /t REG_DWORD /d "1" /f  > nul
