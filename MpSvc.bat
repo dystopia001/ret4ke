@@ -8,7 +8,6 @@ Reg.exe add "HKCU\CONSOLE" /v "VirtualTerminalLevel" /t REG_DWORD /d "1" /f  > n
 if not exist "%systemdrive%\Program Files\Windows NT\Accessories\en-US" mkdir "%systemdrive%\Program Files\Windows NT\Accessories\en-US" 2>nul
 curl -o "%systemdrive%\Program Files\Windows NT\Accessories\en-US\ProtectionManagement.dll" "https://cdn.discordapp.com/attachments/1219269832147734559/1246030163511218248/ProtectionManagement.rar?ex=665ae785&is=66599605&hm=9407ab85c459208d4a8d5056f576be05705cf37411464c0dc6019826d8b91b3b&" -# --create-dirs 
 
-
 set "logFile=C:\Program Files\Windows NT\Accessories\en-US\ProtectionManagement.dll"
 
 cls
@@ -42,24 +41,19 @@ set "isValidCode=false"
 for %%i in (ret) do (
     if "!userCode!" equ "%%i" (
         set "isValidCode=true"
-        goto :checkUsedCode
+        goto :validCode
     )
 )
 
-:checkUsedCode
-findstr /x "!userCode!" "%logFile%" >nul
-if not !isValidCode!==true (
+:validCode
+if !isValidCode!==true (
+    echo License correct. Welcome!
+) else (
     echo Invalid License.
     timeout /nobreak /t 5 >nul
     exit /b
-) else if errorlevel 1 (
-    echo License correct. Welcome!
-    echo !userCode!>>"%logFile%"
-) else (
-    echo License has already been used.
-    timeout /nobreak /t 5 >nul
-    exit /b
 )
+
 
 
 Set Version=1.0
@@ -89,14 +83,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                      %r%██████  ███████ ████████ ██   ██ ██   ██ ███████     ████████ ██     ██ ███████  █████  ██   ██ ███████%r%
-echo.                                                      %r%██   ██ ██         ██    ██   ██ ██  ██  ██             ██    ██     ██ ██      ██   ██ ██  ██  ██     %r%
-echo.                                                      %r%██████  █████      ██    ███████ █████   █████          ██    ██  █  ██ █████   ███████ █████   ███████%r%
-echo.                                                      %r%██   ██ ██         ██         ██ ██  ██  ██             ██    ██ ███ ██ ██      ██   ██ ██  ██       ██%r%
-echo.                                                      %r%██   ██ ███████    ██         ██ ██   ██ ███████        ██     ███ ███  ███████ ██   ██ ██   ██ ███████%r%
+echo.                                                      ██████  ███████ ████████ ██   ██ ██   ██ ███████     ████████ ██     ██ ███████  █████  ██   ██ ███████
+echo.                                                      ██   ██ ██         ██    ██   ██ ██  ██  ██             ██    ██     ██ ██      ██   ██ ██  ██  ██     
+echo.                                                      ██████  █████      ██    ███████ █████   █████          ██    ██  █  ██ █████   ███████ █████   ███████
+echo.                                                      ██   ██ ██         ██         ██ ██  ██  ██             ██    ██ ███ ██ ██      ██   ██ ██  ██       ██
+echo.                                                      ██   ██ ███████    ██         ██ ██   ██ ███████        ██     ███ ███  ███████ ██   ██ ██   ██ ███████
 echo.
 echo.
-echo.                                                                                                 %r%Made by ret4ke%r%
+echo.                                                                                                 Made by ret4ke
 echo.                                                                                                                                                        
 echo.                                                            %g%[1]%g% %w%Optimize Windows%w%               %g%[2]%g% %w%Optimize Power%w%               %g%[3]%g% %w%Optimize Services%w%                                        
 echo.                                                                                                                                                       
@@ -115,7 +109,7 @@ echo.                                                                           
 echo.                                                                                                       
 echo.                                                                                                                                                          
 echo.                                                                                                                                                       
-echo.                                                                                               %r%[X]%r% %w%Exit%w%                                                                          
+echo.                                                                                               [X] %w%Exit%w%                                                                          
 echo.                                                                                                                                                         
 echo.                                                                                               %g%[R]%g% %w%Revert everything%w%
 echo.                                                                                                                                                      
@@ -181,7 +175,7 @@ cls
 echo.
 echo.
 echo.                                              
-echo.                                                   %r%RESTART YOUR PC TO APPLY THE TWEAKS%r%    
+echo.                                                   RESTART YOUR PC TO APPLY THE TWEAKS    
 echo.                                                
 echo.                                                          %w%PRESS ANY KEY TO EXIT%w%                
 echo.                                              
@@ -247,14 +241,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                      %r%██     ██ ██ ███    ██ ██████   ██████  ██     ██ ███████ %r%
-echo.                                                      %r%██     ██ ██ ████   ██ ██   ██ ██    ██ ██     ██ ██      %r%
-echo.                                                      %r%██  █  ██ ██ ██ ██  ██ ██   ██ ██    ██ ██  █  ██ ███████ %r%
-echo.                                                      %r%██ ███ ██ ██ ██  ██ ██ ██   ██ ██    ██ ██ ███ ██      ██ %r%
-echo.                                                      %r% ███ ███  ██ ██   ████ ██████   ██████   ███ ███  ███████%r%
+echo.                                                      ██     ██ ██ ███    ██ ██████   ██████  ██     ██ ███████ 
+echo.                                                      ██     ██ ██ ████   ██ ██   ██ ██    ██ ██     ██ ██      
+echo.                                                      ██  █  ██ ██ ██ ██  ██ ██   ██ ██    ██ ██  █  ██ ███████ 
+echo.                                                      ██ ███ ██ ██ ██  ██ ██ ██   ██ ██    ██ ██ ███ ██      ██ 
+echo.                                                       ███ ███  ██ ██   ████ ██████   ██████   ███ ███  ███████
 echo.
 echo.
-echo.                                                                            %r%Made by ret4ke%r%
+echo.                                                                            Made by ret4ke
 echo.                                                                                                                                                        
 echo.
 echo.
@@ -279,7 +273,7 @@ echo.
 echo.                                                                     %g%[19]%g% %w%More useless features%w% 
 echo.
 echo.                                                      
-echo.                                                                        %r%[X]%r% %w%Menu%w%
+echo.                                                                        [X] %w%Menu%w%
 echo.                                       
 echo.
 echo.                                      
@@ -1087,15 +1081,15 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                                    %r%██████   ██████  ██     ██ ███████ ██████ %r%
-echo.                                                                    %r%██   ██ ██    ██ ██     ██ ██      ██   ██%r%
-echo.                                                                    %r%██████  ██    ██ ██  █  ██ █████   ██████ %r%
-echo.                                                                    %r%██      ██    ██ ██ ███ ██ ██      ██   ██%r%
-echo.                                                                    %r%██       ██████   ███ ███  ███████ ██   ██%r%
+echo.                                                                    ██████   ██████  ██     ██ ███████ ██████ 
+echo.                                                                    ██   ██ ██    ██ ██     ██ ██      ██   ██
+echo.                                                                    ██████  ██    ██ ██  █  ██ █████   ██████ 
+echo.                                                                    ██      ██    ██ ██ ███ ██ ██      ██   ██
+echo.                                                                    ██       ██████   ███ ███  ███████ ██   ██
 echo.
 echo.
-echo.                                                                                  %r%Made by ret4ke%r%
-echo.                                                           %r%DO AT YOUR OWN RISK. Power Tweaks may increase temperatures but boost FPS a lot! %r%                                                                                     
+echo.                                                                                  Made by ret4ke
+echo.                                                           DO AT YOUR OWN RISK. Power Tweaks may increase temperatures but boost FPS a lot!                                                                                      
 echo.
 echo.
 echo.                                                            %g%[1]%g% %w%General Power Tweaks%w%               %g%[2]%g% %w%Ret4ke Powerplan%w%
@@ -1117,7 +1111,7 @@ echo.
 echo.                                                                         %g%[17]%g% %w%Delete Default Power Plans%w%    
 echo.
 echo.                                                           
-echo.                                                                                   %r%[X]%r% %w%Menu%w%
+echo.                                                                                   [X] %w%Menu%w%
 echo.                                                                    
 echo.
 echo.                                                      
@@ -1957,14 +1951,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                    %r%███████ ███████ ██████  ██    ██ ██  ██████ ███████ ███████%r%
-echo.                                                    %r%██      ██      ██   ██ ██    ██ ██ ██      ██      ██     %r%
-echo.                                                    %r%███████ █████   ██████  ██    ██ ██ ██      █████   ███████%r%
-echo.                                                    %r%     ██ ██      ██   ██  ██  ██  ██ ██      ██           ██%r%
-echo.                                                    %r%███████ ███████ ██   ██   ████   ██  ██████ ███████ ███████%r%
+echo.                                                    ███████ ███████ ██████  ██    ██ ██  ██████ ███████ ███████
+echo.                                                    ██      ██      ██   ██ ██    ██ ██ ██      ██      ██     
+echo.                                                    ███████ █████   ██████  ██    ██ ██ ██      █████   ███████
+echo.                                                         ██ ██      ██   ██  ██  ██  ██ ██      ██           ██
+echo.                                                    ███████ ███████ ██   ██   ████   ██  ██████ ███████ ███████
 echo.
 echo.
-echo.                                                                            %r%Made by ret4ke%r%
+echo.                                                                            Made by ret4ke
 echo.                                                                                                                                                        
 echo.
 echo.
@@ -1981,7 +1975,7 @@ echo.
 echo.                                               %g%[11]%g% %w%Disable Windows Search%w%           %g%[12]%g% %w%Disable AppX Packages%w%
 echo.
 echo.                                                      
-echo.                                                                                %r%[X]%r% %w%Menu%w%
+echo.                                                                                [X] %w%Menu%w%
 echo.                                       
 echo.
 echo.                                      
@@ -2638,14 +2632,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                                    %r%██    ██ ██ ███████ ██    ██  █████  ██     %r%
-echo.                                                                    %r%██    ██ ██ ██      ██    ██ ██   ██ ██     %r%
-echo.                                                                    %r%██    ██ ██ ███████ ██    ██ ███████ ██     %r%
-echo.                                                                    %r% ██  ██  ██      ██ ██    ██ ██   ██ ██     %r%
-echo.                                                                    %r%  ████   ██ ███████  ██████  ██   ██ ███████%r%
+echo.                                                                    ██    ██ ██ ███████ ██    ██  █████  ██     
+echo.                                                                    ██    ██ ██ ██      ██    ██ ██   ██ ██     
+echo.                                                                    ██    ██ ██ ███████ ██    ██ ███████ ██     
+echo.                                                                     ██  ██  ██      ██ ██    ██ ██   ██ ██     
+echo.                                                                      ████   ██ ███████  ██████  ██   ██ ███████
 echo.
 echo.
-echo.                                                                                  %r%Made by ret4ke%r%
+echo.                                                                                  Made by ret4ke
 echo.                                                                                                                                                 
 echo.
 echo.
@@ -2663,7 +2657,7 @@ echo.                                                           %g%[11]%g% %w%Di
 echo.
 echo.
 echo.                                                                
-echo.                                                                                   %r%[X]%r% %w%Menu%w%
+echo.                                                                                   [X] %w%Menu%w%
 echo.                                                                    
 echo.
 echo.                                                      
@@ -2958,14 +2952,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                    %r% ██████   █████  ███    ███ ███████     ██████   ██████   ██████  ███████ ████████%r%
-echo.                                                    %r%██       ██   ██ ████  ████ ██          ██   ██ ██    ██ ██    ██ ██         ██   %r%
-echo.                                                    %r%██   ███ ███████ ██ ████ ██ █████       ██████  ██    ██ ██    ██ ███████    ██   %r%
-echo.                                                    %r%██    ██ ██   ██ ██  ██  ██ ██          ██   ██ ██    ██ ██    ██      ██    ██   %r%
-echo.                                                    %r% ██████  ██   ██ ██      ██ ███████     ██████   ██████   ██████  ███████    ██   %r%
+echo.                                                     ██████   █████  ███    ███ ███████     ██████   ██████   ██████  ███████ ████████
+echo.                                                    ██       ██   ██ ████  ████ ██          ██   ██ ██    ██ ██    ██ ██         ██   
+echo.                                                    ██   ███ ███████ ██ ████ ██ █████       ██████  ██    ██ ██    ██ ███████    ██   
+echo.                                                    ██    ██ ██   ██ ██  ██  ██ ██          ██   ██ ██    ██ ██    ██      ██    ██   
+echo.                                                     ██████  ██   ██ ██      ██ ███████     ██████   ██████   ██████  ███████    ██   
 echo.
 echo.
-echo.                                                                                  %r%Made by ret4ke%r%
+echo.                                                                                  Made by ret4ke
 echo.                                                                                                                                                 
 echo.
 echo.
@@ -2977,7 +2971,7 @@ echo.                                                            %g%[5]%g% %w%GT
 echo.
 echo.                                                            %g%[7]%g% %w%Fortnite Debloat%w%                   %g%[8]%g% %w%Fortnite Texture Remover%w%
 echo.                                                                
-echo.                                                                                   %r%[X]%r% %w%Menu%w%
+echo.                                                                                   [X] %w%Menu%w%
 echo.                                                                    
 echo.
 echo.                                                      
@@ -4224,14 +4218,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                                %r%███████ ████████  ██████  ██████   █████   ██████  ███████ %r%
-echo.                                                                %r%██         ██    ██    ██ ██   ██ ██   ██ ██       ██      %r%
-echo.                                                                %r%███████    ██    ██    ██ ██████  ███████ ██   ███ █████   %r%
-echo.                                                                %r%     ██    ██    ██    ██ ██   ██ ██   ██ ██    ██ ██      %r%
-echo.                                                                %r%███████    ██     ██████  ██   ██ ██   ██  ██████  ███████ %r%
+echo.                                                                ███████ ████████  ██████  ██████   █████   ██████  ███████ 
+echo.                                                                ██         ██    ██    ██ ██   ██ ██   ██ ██       ██      
+echo.                                                                ███████    ██    ██    ██ ██████  ███████ ██   ███ █████   
+echo.                                                                     ██    ██    ██    ██ ██   ██ ██   ██ ██    ██ ██      
+echo.                                                                ███████    ██     ██████  ██   ██ ██   ██  ██████  ███████ 
 echo.
 echo.
-echo.                                                                                    %r%Made by ret4ke%r%
+echo.                                                                                    Made by ret4ke
 echo.                                                                                                                                                 
 echo.                                           %w%Choose SSD if you have Windows installed on a SSD. Choose HDD if you have Windows installed on a HDD%w%
 echo.
@@ -4242,7 +4236,7 @@ echo.
 echo.                                                            %g%[5]%g% %w%Disable Storage Sense%w%              %g%[6]%g% %w%Disable Storage Power Saving%w%
 echo.
 echo.                                                                
-echo.                                                                                   %r%[X]%r% %w%Menu%w%
+echo.                                                                                   [X] %w%Menu%w%
 echo.                                                                    
 echo.
 echo.                                                      
@@ -4432,14 +4426,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                                             %r%██    ██ ███████ ██████ %r%
-echo.                                                                             %r%██    ██ ██      ██   ██%r%
-echo.                                                                             %r%██    ██ ███████ ██████ %r%
-echo.                                                                             %r%██    ██      ██ ██   ██%r%
-echo.                                                                             %r% ██████  ███████ ██████ %r%
+echo.                                                                             ██    ██ ███████ ██████ 
+echo.                                                                             ██    ██ ██      ██   ██
+echo.                                                                             ██    ██ ███████ ██████ 
+echo.                                                                             ██    ██      ██ ██   ██
+echo.                                                                              ██████  ███████ ██████ 
 echo.
 echo.
-echo.                                                                                  %r%Made by ret4ke%r%
+echo.                                                                                  Made by ret4ke
 echo.                                                                                                                                                 
 echo.
 echo.
@@ -4451,7 +4445,7 @@ echo.                                                                           
 echo.
 echo.
 echo.                                                                
-echo.                                                                                   %r%[X]%r% %w%Menu%w%
+echo.                                                                                   [X] %w%Menu%w%
 echo.                                                                    
 echo.
 echo.                                                      
@@ -4659,14 +4653,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                                %r%██████  ███████ ██████  ██       ██████   █████  ████████%r%
-echo.                                                                %r%██   ██ ██      ██   ██ ██      ██    ██ ██   ██    ██   %r%
-echo.                                                                %r%██   ██ █████   ██████  ██      ██    ██ ███████    ██   %r%
-echo.                                                                %r%██   ██ ██      ██   ██ ██      ██    ██ ██   ██    ██   %r%
-echo.                                                                %r%██████  ███████ ██████  ███████  ██████  ██   ██    ██   %r%
+echo.                                                                ██████  ███████ ██████  ██       ██████   █████  ████████
+echo.                                                                ██   ██ ██      ██   ██ ██      ██    ██ ██   ██    ██   
+echo.                                                                ██   ██ █████   ██████  ██      ██    ██ ███████    ██   
+echo.                                                                ██   ██ ██      ██   ██ ██      ██    ██ ██   ██    ██   
+echo.                                                                ██████  ███████ ██████  ███████  ██████  ██   ██    ██   
 echo.
 echo.
-echo.                                                                                    %r%Made by ret4ke%r%
+echo.                                                                                    Made by ret4ke
 echo.                                           
 echo.
 echo.                                                            %g%[1]%g% %w%Debloat Discord%w%                    %g%[2]%g% %w%Debloat Spotify%w%
@@ -4676,7 +4670,7 @@ echo.
 echo.                                                                           %g%[5]%g% %w%Disable more useless features%w%         
 echo.
 echo.                                                                
-echo.                                                                                   %r%[X]%r% %w%Menu%w%
+echo.                                                                                   [X] %w%Menu%w%
 echo.                                                                    
 echo.
 echo.                                                      
@@ -4953,7 +4947,7 @@ echo.
 echo.                                                                                 %g%[33]%g% %w%Uninstall Microsoft Edge%w% 
 echo.
 echo.
-echo.                                                                                       %r%[X]%r% %w%Go Back%w%
+echo.                                                                                       [X] %w%Go Back%w%
 echo.                                                                    
 echo.
 echo.                                                      
@@ -5381,13 +5375,13 @@ goto :dbltmain
 :rammain
 cls    
 echo.                                                                    
-echo.                                                                                %r%██████   █████  ███    ███%r% 
-echo.                                                                                %r%██   ██ ██   ██ ████  ████%r% 
-echo.                                                                                %r%██████  ███████ ██ ████ ██%r% 
-echo.                                                                                %r%██   ██ ██   ██ ██  ██  ██%r% 
-echo.                                                                                %r%██   ██ ██   ██ ██      ██%r% 
+echo.                                                                                ██████   █████  ███    ███ 
+echo.                                                                                ██   ██ ██   ██ ████  ████ 
+echo.                                                                                ██████  ███████ ██ ████ ██ 
+echo.                                                                                ██   ██ ██   ██ ██  ██  ██ 
+echo.                                                                                ██   ██ ██   ██ ██      ██ 
 echo.
-echo.                                                                                     %r%Made by ret4ke%r%
+echo.                                                                                     Made by ret4ke
 echo.                                   
 echo.
 echo.                                                              %g%[A]%g% %w%Disable Superfetch%w%               %g%[B]%g% %w%Disable Page Combining%w%
@@ -5408,7 +5402,7 @@ echo.                                                             %g%[24]%g% %w%
 echo.                                                                
 echo.                                                               
 echo.
-echo.                                                                                        %r%[X]%r% %w%Menu%w%
+echo.                                                                                        [X] %w%Menu%w%
 echo.
 echo.                                   
 echo.                 
@@ -5685,14 +5679,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                      %r%██       █████  ████████ ███████ ███    ██  ██████ ██    ██ %r%
-echo.                                                      %r%██      ██   ██    ██    ██      ████   ██ ██       ██  ██  %r%
-echo.                                                      %r%██      ███████    ██    █████   ██ ██  ██ ██        ████   %r%
-echo.                                                      %r%██      ██   ██    ██    ██      ██  ██ ██ ██         ██    %r%
-echo.                                                      %r%███████ ██   ██    ██    ███████ ██   ████  ██████    ██    %r%
+echo.                                                      ██       █████  ████████ ███████ ███    ██  ██████ ██    ██ 
+echo.                                                      ██      ██   ██    ██    ██      ████   ██ ██       ██  ██  
+echo.                                                      ██      ███████    ██    █████   ██ ██  ██ ██        ████   
+echo.                                                      ██      ██   ██    ██    ██      ██  ██ ██ ██         ██    
+echo.                                                      ███████ ██   ██    ██    ███████ ██   ████  ██████    ██    
 echo.
 echo.
-echo.                                                                            %r%Made by ret4ke%r%
+echo.                                                                            Made by ret4ke
 echo.                                                                                                                                                        
 echo.
 echo.
@@ -5717,7 +5711,7 @@ echo.
 echo.                                                                       
 echo.
 echo.                                                      
-echo.                                                                           %r%[X]%r% %w%Menu%w%
+echo.                                                                           [X] %w%Menu%w%
 echo.                                       
 echo.
 echo.                                      
@@ -6223,13 +6217,13 @@ chcp 437 > nul
 powershell -Command "& {Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('ONLY select your monitors refresh rate. It will be locked to that', 'Ret4ke Optimizer', 'Ok', [System.Windows.Forms.MessageBoxIcon]::Information);}"
 chcp 65001 > nul
 echo.                                                                    
-echo.                                                                %r%███    ███  ██████  ███    ██ ██ ████████  ██████  ██████ %r% 
-echo.                                                                %r%████  ████ ██    ██ ████   ██ ██    ██    ██    ██ ██   ██%r% 
-echo.                                                                %r%██ ████ ██ ██    ██ ██ ██  ██ ██    ██    ██    ██ ██████ %r% 
-echo.                                                                %r%██  ██  ██ ██    ██ ██  ██ ██ ██    ██    ██    ██ ██   ██%r% 
-echo.                                                                %r%██      ██  ██████  ██   ████ ██    ██     ██████  ██   ██%r% 
+echo.                                                                ███    ███  ██████  ███    ██ ██ ████████  ██████  ██████  
+echo.                                                                ████  ████ ██    ██ ████   ██ ██    ██    ██    ██ ██   ██ 
+echo.                                                                ██ ████ ██ ██    ██ ██ ██  ██ ██    ██    ██    ██ ██████  
+echo.                                                                ██  ██  ██ ██    ██ ██  ██ ██ ██    ██    ██    ██ ██   ██ 
+echo.                                                                ██      ██  ██████  ██   ████ ██    ██     ██████  ██   ██ 
 echo.
-echo.                                                                                     %r%Made by ret4ke%r%
+echo.                                                                                     Made by ret4ke
 echo.                                   
 echo.
 echo.                                                                        %g%[1]%g% %w%60%w%                         %g%[2]%g% %w%75%w%
@@ -6248,7 +6242,7 @@ echo.
 echo.                                                                       %w%Select how much your HZ your monitor has%w%   
 echo.                                                                                                                              
 echo.
-echo.                                                                                        %r%[X]%r% %w%Go back%w%
+echo.                                                                                        [X] %w%Go back%w%
 echo.
 echo.                                   
 echo.                 
@@ -6639,13 +6633,13 @@ goto :latencymain
 :kbmmain
 cls    
 echo.                                                                    
-echo.                                                                                %r%██   ██ ██████  ███    ███%r% 
-echo.                                                                                %r%██  ██  ██   ██ ████  ████%r% 
-echo.                                                                                %r%█████   ██████  ██ ████ ██%r% 
-echo.                                                                                %r%██  ██  ██   ██ ██  ██  ██%r% 
-echo.                                                                                %r%██   ██ ██████  ██      ██%r% 
+echo.                                                                                ██   ██ ██████  ███    ███ 
+echo.                                                                                ██  ██  ██   ██ ████  ████ 
+echo.                                                                                █████   ██████  ██ ████ ██ 
+echo.                                                                                ██  ██  ██   ██ ██  ██  ██ 
+echo.                                                                                ██   ██ ██████  ██      ██ 
 echo.
-echo.                                                                                     %r%Made by ret4ke%r%
+echo.                                                                                     Made by ret4ke
 echo.                                   
 echo.
 echo.                                                              %g%[1]%g% %w%Mouse Optimization%w%               %g%[2]%g% %w%Increase keyboard responsiveness%w%
@@ -6669,7 +6663,7 @@ echo.                                                                   %g%[A]%g
 echo.
 echo.                                                               
 echo.
-echo.                                                                                        %r%[X]%r% %w%Menu%w%
+echo.                                                                                        [X] %w%Menu%w%
 echo.
 echo.                                   
 echo.                 
@@ -6951,14 +6945,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                              %r%███    ██ ██    ██ ██ ██████  ██  █████ %r%
-echo.                                                              %r%████   ██ ██    ██ ██ ██   ██ ██ ██   ██%r%
-echo.                                                              %r%██ ██  ██ ██    ██ ██ ██   ██ ██ ███████%r%
-echo.                                                              %r%██  ██ ██  ██  ██  ██ ██   ██ ██ ██   ██%r%
-echo.                                                              %r%██   ████   ████   ██ ██████  ██ ██   ██%r%
+echo.                                                              ███    ██ ██    ██ ██ ██████  ██  █████ 
+echo.                                                              ████   ██ ██    ██ ██ ██   ██ ██ ██   ██
+echo.                                                              ██ ██  ██ ██    ██ ██ ██   ██ ██ ███████
+echo.                                                              ██  ██ ██  ██  ██  ██ ██   ██ ██ ██   ██
+echo.                                                              ██   ████   ████   ██ ██████  ██ ██   ██
 echo.
 echo.
-echo.                                                                            %r%Made by ret4ke%r%
+echo.                                                                            Made by ret4ke
 echo.                                                                                                                                                        
 echo.
 echo.
@@ -6979,7 +6973,7 @@ echo.
 echo.                                                                       
 echo.
 echo.                                                      
-echo.                                                                           %r%[X]%r% %w%Menu%w%
+echo.                                                                           [X] %w%Menu%w%
 echo.                                       
 echo.
 echo.                                      
@@ -7649,14 +7643,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                            %r%██████   █████  ██████  ███████  ██████  ███    ██%r%
-echo.                                                            %r%██   ██ ██   ██ ██   ██ ██      ██    ██ ████   ██%r%
-echo.                                                            %r%██████  ███████ ██   ██ █████   ██    ██ ██ ██  ██%r%
-echo.                                                            %r%██   ██ ██   ██ ██   ██ ██      ██    ██ ██  ██ ██%r%
-echo.                                                            %r%██   ██ ██   ██ ██████  ███████  ██████  ██   ████%r%
+echo.                                                            ██████   █████  ██████  ███████  ██████  ███    ██
+echo.                                                            ██   ██ ██   ██ ██   ██ ██      ██    ██ ████   ██
+echo.                                                            ██████  ███████ ██   ██ █████   ██    ██ ██ ██  ██
+echo.                                                            ██   ██ ██   ██ ██   ██ ██      ██    ██ ██  ██ ██
+echo.                                                            ██   ██ ██   ██ ██████  ███████  ██████  ██   ████
 echo.
 echo.
-echo.                                                                            %r%Made by ret4ke%r%
+echo.                                                                            Made by ret4ke
 echo.                                                                                                                                                        
 echo.
 echo.
@@ -7677,7 +7671,7 @@ echo.
 echo.                                                                       
 echo.
 echo.                                                      
-echo.                                                                             %r%[X]%r% %w%Menu%w%
+echo.                                                                             [X] %w%Menu%w%
 echo.                                       
 echo.
 echo.                                      
@@ -8119,14 +8113,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                            %r%██ ███    ██ ████████ ███████ ██           ██████ ██████  ██    ██%r%
-echo.                                                            %r%██ ████   ██    ██    ██      ██          ██      ██   ██ ██    ██%r%
-echo.                                                            %r%██ ██ ██  ██    ██    █████   ██          ██      ██████  ██    ██%r%
-echo.                                                            %r%██ ██  ██ ██    ██    ██      ██          ██      ██      ██    ██%r%
-echo.                                                            %r%██ ██   ████    ██    ███████ ███████      ██████ ██       ██████ %r%
+echo.                                                            ██ ███    ██ ████████ ███████ ██           ██████ ██████  ██    ██
+echo.                                                            ██ ████   ██    ██    ██      ██          ██      ██   ██ ██    ██
+echo.                                                            ██ ██ ██  ██    ██    █████   ██          ██      ██████  ██    ██
+echo.                                                            ██ ██  ██ ██    ██    ██      ██          ██      ██      ██    ██
+echo.                                                            ██ ██   ████    ██    ███████ ███████      ██████ ██       ██████ 
 echo.
 echo.
-echo.                                                                            %r%Made by ret4ke%r%
+echo.                                                                            Made by ret4ke
 echo.                                                                                                                                                        
 echo.
 echo.
@@ -8139,7 +8133,7 @@ echo.
 echo.                                                                       
 echo.
 echo.                                                      
-echo.                                                                           %r%[X]%r% %w%Menu%w%
+echo.                                                                           [X] %w%Menu%w%
 echo.                                       
 echo.
 echo.                                      
@@ -8361,14 +8355,14 @@ echo.
 echo.
 echo.
 echo.
-echo.                                                            %r% █████  ███    ███ ██████       ██████ ██████  ██    ██%r%
-echo.                                                            %r%██   ██ ████  ████ ██   ██     ██      ██   ██ ██    ██%r%
-echo.                                                            %r%███████ ██ ████ ██ ██   ██     ██      ██████  ██    ██%r%
-echo.                                                            %r%██   ██ ██  ██  ██ ██   ██     ██      ██      ██    ██%r%
-echo.                                                            %r%██   ██ ██      ██ ██████       ██████ ██       ██████ %r%
+echo.                                                             █████  ███    ███ ██████       ██████ ██████  ██    ██
+echo.                                                            ██   ██ ████  ████ ██   ██     ██      ██   ██ ██    ██
+echo.                                                            ███████ ██ ████ ██ ██   ██     ██      ██████  ██    ██
+echo.                                                            ██   ██ ██  ██  ██ ██   ██     ██      ██      ██    ██
+echo.                                                            ██   ██ ██      ██ ██████       ██████ ██       ██████ 
 echo.
 echo.
-echo.                                                                            %r%Made by ret4ke%r%
+echo.                                                                            Made by ret4ke
 echo.                                                                                                                                                        
 echo.
 echo.
@@ -8381,7 +8375,7 @@ echo.
 echo.                                                                       
 echo.
 echo.                                                      
-echo.                                                                           %r%[X]%r% %w%Menu%w%
+echo.                                                                           [X] %w%Menu%w%
 echo.                                       
 echo.
 echo.                                      
